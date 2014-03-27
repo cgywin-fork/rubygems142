@@ -106,7 +106,7 @@ class Gem::Requirement
   end
 
   def hash # :nodoc:
-    requirements.hash
+    requirements.inject(0) { |h, r| h ^ r.first.hash ^ r.last.hash }
   end
 
   def marshal_dump # :nodoc:
